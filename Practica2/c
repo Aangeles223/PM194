@@ -1,0 +1,19 @@
+const personas = [
+  { nombre: "Ana", edad: 22 },
+  { nombre: "Luis", edad: 35 },
+  { nombre: "Maria", edad: 28 },
+];
+
+const r = personas.find((persona) => persona.nombre === "Luis");
+console.log("La persona encontrada es: " + r.nombre);
+
+const r2 = personas.forEach((persona) => {
+  console.log(
+    "Nombre: " + persona.nombre + ", Edad: " + persona.edad + " años"
+  );
+});
+
+const r3 = personas.reduce((acumulador, persona) => {
+  return acumulador + persona.edad;
+}, 0);
+console.log("La suma de las edades es: " + r3);
