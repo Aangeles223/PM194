@@ -2,10 +2,22 @@
 
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button } from "react-native";
+import React, { useState } from "react";
 
-const Texto = (props) => {
-  const { contenidos } = props;
-  return <Text> {contenidos} </Text>;
+const Texto = () => {
+  const [contenido, setContenido] = useState("Hola Mundo React Native");
+  const actualizaTexto = () => {
+    setContenido("Texto actualizado");
+  };
+  return <Text onPress={actualizaTexto}> {contenido} </Text>;
+};
+
+const Boton = () => {
+  const [Texto, setContenido] = useState("TRABAJA");
+  const actualizaTexto = () => {
+    setContenido("NO TRABAJES");
+  };
+  return <Button onPress={actualizaTexto} title={Texto}></Button>;
 };
 
 /* ZONA 2 : MAIN */
@@ -13,10 +25,10 @@ const Texto = (props) => {
 export default function App() {
   return (
     <View style={styles.container}>
-      <Texto contenidos="Hola"> </Texto>
-      <Texto contenidos="Mundo"> </Texto>
-      <Texto contenidos="Reac Native"></Texto>
-      <Button title="Trabaja!"></Button>
+      <Boton title="Trabaja!"></Boton>
+      <Texto> </Texto>
+      <Texto> </Texto>
+      <Texto> </Texto>
       <StatusBar style="auto" />
     </View>
   );
