@@ -1,7 +1,7 @@
 /* ZONA 1 : IMPORTACIONES */
 
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, Switch } from "react-native";
 import React, { useState } from "react";
 
 const Texto = ({ style }) => {
@@ -10,18 +10,17 @@ const Texto = ({ style }) => {
     setContenido("Texto actualizado");
   };
   return (
-    <Text style={[styles.text, style]} onPress={actualizaTexto}>
-      {contenido}
-    </Text>
+    <View style={{ margin: 10 }}>
+      <Text style={[styles.text, style]} onPress={actualizaTexto}>
+        {contenido}
+      </Text>
+      <Button
+        title="Actualizar Texto"
+        onPress={actualizaTexto}
+        color="orange"
+      />
+    </View>
   );
-};
-
-const Boton = () => {
-  const [Texto, setContenido] = useState("TRABAJA");
-  const actualizaTexto = () => {
-    setContenido("NO TRABAJES");
-  };
-  return <Button onPress={actualizaTexto} title={Texto}></Button>;
 };
 
 /* ZONA 2 : MAIN */
@@ -29,8 +28,6 @@ const Boton = () => {
 export default function App() {
   return (
     <View style={styles.container}>
-      <Boton title="Trabaja!"></Boton>
-
       <Texto style={styles.green}> </Texto>
       <Texto style={styles.blue}> </Texto>
       <Texto style={styles.black}> </Texto>
