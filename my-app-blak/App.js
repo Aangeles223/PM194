@@ -1,51 +1,85 @@
 /* ZONA 1 : IMPORTACIONES */
-
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button, Switch } from "react-native";
 import React, { useState } from "react";
-
-const Interruptor = () => {
-  const [isEnable, setIsEnable] = useState(false);
-  const toggleSwitch = () => setIsEnable((previousState) => !previousState);
-  return (
-    <View style={styles.container}>
-      <Text>{isEnable ? "Activado" : "Desactivado"}</Text>
-      <Switch
-        trackColor={{ false: "#767577", true: "#81b0ff" }}
-        thumbColor={isEnable ? "#f5dd4b" : "#f4f3f4"}
-        onValueChange={toggleSwitch}
-        value={isEnable}
-      />
-    </View>
-  );
-};
-
-const Texto = ({ style }) => {
-  const [contenido, setContenido] = useState("Hola Mundo React Native");
-  const actualizaTexto = () => {
-    setContenido("Texto actualizado");
-  };
-  return (
-    <View style={{ margin: 10 }}>
-      <Text style={[styles.text, style]} onPress={actualizaTexto}>
-        {contenido}
-      </Text>
-      <Button
-        title="Actualizar Texto"
-        onPress={actualizaTexto}
-        color="orange"
-      />
-    </View>
-  );
-};
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  Alert,
+  ScrollView,
+} from "react-native";
 
 /* ZONA 2 : MAIN */
 
 export default function App() {
+  const [nombre, setNombre] = useState("");
+  const [password, setPassword] = useState("");
+  const [comment, setComment] = useState("");
+  const [age, setAge] = useState("");
+
+  const showAlert = () => {
+    if (nombre.trim() === "" || password.trim() === "" || age.trim() === "") {
+      window.alert("Error", "Por favor, completa todos los campos.");
+    } else {
+      window.alert(
+        `Nombre: ${nombre}\nContrasena: ${password}\nEdad: ${age}\nComentarios: ${comment}`
+      );
+    }
+  };
+
   return (
-    <View style={styles.container}>
-      <Interruptor />
-    </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.title}>Nombre</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Escribe tu nombre"
+        value={nombre}
+        onChangeText={setNombre}
+      ></TextInput>
+
+      <Text style={styles.title}>Contrasena</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Escribe tu contrasena"
+        secureTextEntry={true}
+        value={password}
+        onChangeText={setPassword}
+      ></TextInput>
+
+      <Text style={styles.title}>Edad</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Escribe tu edad"
+        keyboardType="numeric"
+        value={age}
+        onChangeText={setAge}
+      ></TextInput>
+
+      <Text style={styles.title}>Comentarios Multilineal</Text>
+      <TextInput
+        style={[styles.input, { height: 100, textAlignVertical: "top" }]}
+        placeholder="Escribe tus comentarios"
+        multiline={true}
+        numberOfLines={4}
+        value={comment}
+        onChangeText={setComment}
+      ></TextInput>
+
+      <Text style={styles.title}>Campo de solo lectura</Text>
+      <TextInput
+        style={styles.input}
+        value="Este campo es de solo lectura"
+        editable={false}
+        selectTextOnFocus={false}
+      ></TextInput>
+
+      <Button
+        title="Mostrar Alerta"
+        onPress={showAlert}
+        color="#841584"
+      ></Button>
+    </ScrollView>
   );
 }
 
@@ -53,16 +87,27 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "baseline",
+    flexGrow: 1,
+    backgroundColor: "#f0f0f0",
+    alignItems: "center",
     justifyContent: "center",
+    padding: 20,
   },
-  text: {
-    color: "white",
-    fontSize: 20,
+  title: {
+    fontSize: 17,
+    color: "#333",
+    marginBottom: 6,
+    alignSelf: "flex-start",
   },
-  green: { backgroundColor: "green" },
-  blue: { backgroundColor: "blue" },
-  black: { backgroundColor: "black" },
+  input: {
+    height: 44,
+    borderColor: "#bbb",
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    marginBottom: 16,
+    borderRadius: 8,
+    backgroundColor: "#fff",
+    width: "100%",
+    fontSize: 15,
+  },
 });
