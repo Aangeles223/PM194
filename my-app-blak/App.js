@@ -1,45 +1,59 @@
-import React, { useState, useEffect, use } from "react";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { ImageBackground } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
-import { StyleSheet, Text, TextInput, View, Button } from "react-native";
 
+// 1. Configuramos el SplashScreen
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  const [appReady, setAppReady] = useState(false);
+  const [appReady, setAppReady] = useState(false); //appReady es un estado que indica si la app ya terminó su "carga"
 
   useEffect(() => {
     setTimeout(async () => {
-      setAppReady(true);
-      await SplashScreen.hideAsync();
+      //espera y es asincrona para usar await
+      setAppReady(true); //cambia de estado
+      await SplashScreen.hideAsync(); //quitar el splash despues de los 2
     }, 2000);
   }, []);
+
+  return (
+    <ImageBackground
+      source={require("./assets/fondo.png")}
+      style={styles.background}
+      resizeMode="cover"
+    >
+      <View style={styles.container}>
+        <Text style={styles.title}>Mi App</Text>
+        <Text style={styles.subtitle}>
+          {appReady ? "¡Carga completa!" : "Cargando..."}
+        </Text>
+      </View>
+    </ImageBackground>
+  );
 }
 
-/* ZONA 3 : ESTILOS */
-
+// 4. Estilos simples
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+  },
   container: {
-    flexGrow: 1,
-    backgroundColor: "#f0f0f0",
-    alignItems: "center",
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
     justifyContent: "center",
-    padding: 20,
+    alignItems: "center",
   },
   title: {
-    fontSize: 17,
-    color: "#333",
-    marginBottom: 6,
-    alignSelf: "flex-start",
+    color: "white",
+    fontSize: 32,
+    fontWeight: "bold",
+    marginBottom: 10,
   },
-  input: {
-    height: 44,
-    borderColor: "#bbb",
-    borderWidth: 1,
-    paddingHorizontal: 10,
-    marginBottom: 16,
-    borderRadius: 8,
-    backgroundColor: "#fff",
-    width: "100%",
-    fontSize: 15,
+  subtitle: {
+    color: "white",
+    fontSize: 18,
   },
 });
