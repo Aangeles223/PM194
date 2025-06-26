@@ -1,5 +1,5 @@
 {
-  "name": "my-app-blak",
+  "name": "blak",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,15 +9,10 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "expo": "~53.0.9",
+    "expo": "~53.0.12",
     "expo-status-bar": "~2.2.3",
     "react": "19.0.0",
-    "react-native": "0.79.2",
-    "react-dom": "19.0.0",
-    "react-native-web": "^0.20.0",
-    "@expo/metro-runtime": "~5.0.4",
-    "expo-splash-screen": "~0.30.9",
-    "expo-sensors": "~14.1.4"
+    "react-native": "0.79.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
