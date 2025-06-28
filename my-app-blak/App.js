@@ -1,151 +1,83 @@
 import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
-  Text,
   View,
-  TextInput,
-  TouchableOpacity,
-  Switch,
-  Modal,
+  Text,
   ImageBackground,
-  Image,
+  ScrollView,
 } from "react-native";
-import { Accelerometer } from "expo-sensors";
 
 export default function App() {
-  const [nombre, setNombre] = useState("");
-  const [correo, setCorreo] = useState("");
-  const [aceptarTerminos, setAceptarTerminos] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
-  const [modalMensaje, setModalMensaje] = useState("");
-  const [modalTitulo, setModalTitulo] = useState("");
-  const [splashVisible, setSplashVisible] = useState(false);
-
-  const handleRegistro = () => {
-    if (!nombre || !correo) {
-      setModalTitulo("Error");
-      setModalMensaje("Por favor completa todos los campos.");
-      setModalVisible(true);
-      return;
-    }
-    if (!aceptarTerminos) {
-      setModalTitulo("Términos no aceptados");
-      setModalMensaje("Debes aceptar los términos y condiciones.");
-      setModalVisible(true);
-      return;
-    }
-    setModalTitulo("¡Registro exitoso!");
-    setModalMensaje(
-      `Bienvenido, ${nombre}!\nCorreo: ${correo}\nTérminos aceptados: Sí`
-    );
-    setModalVisible(true);
-  };
-
-  useEffect(() => {
-    let lastShake = Date.now();
-    const subscription = Accelerometer.addListener(({ x, y, z }) => {
-      const totalForce = Math.abs(x) + Math.abs(y) + Math.abs(z);
-      if (totalForce > 2.2 && Date.now() - lastShake > 1500) {
-        lastShake = Date.now();
-        setSplashVisible(true);
-        setTimeout(() => {
-          setSplashVisible(false);
-          // Recargar la app (web y móvil)
-          if (typeof window !== "undefined" && window.location) {
-            window.location.reload();
-          } else {
-            setNombre("");
-            setCorreo("");
-            setAceptarTerminos(false);
-            setModalVisible(false);
-            setModalMensaje("");
-            setModalTitulo("");
-          }
-        }, 1500);
-      }
-    });
-    return () => subscription && subscription.remove();
-  }, []);
-
   return (
-    <ImageBackground
-      source={require("./assets/fondo.png")}
-      style={styles.background}
-      resizeMode="cover"
+    <ScrollView
+      contentContainerStyle={styles.background}
+      showsVerticalScrollIndicator={false}
+      horizontal={true}
     >
-      {/* Splash al agitar */}
-      {splashVisible && (
-        <View style={styles.splashOverlay}>
-          <Image
-            source={require("./assets/logo.png")}
-            style={styles.splashImg}
-            resizeMode="contain"
-          />
-        </View>
-      )}
-      <View style={styles.overlay}>
-        <View style={styles.formBox}>
-          <Image
-            source={require("./assets/logo.png")}
-            style={styles.logo}
-            resizeMode="contain"
-          />
-          <Text style={styles.title}>Registro de Usuario</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Nombre completo"
-            placeholderTextColor="#ccc"
-            value={nombre}
-            onChangeText={setNombre}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Correo electrónico"
-            placeholderTextColor="#ccc"
-            value={correo}
-            onChangeText={setCorreo}
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
-          <View style={styles.terminosRow}>
-            <Text style={styles.terminosText}>
-              Aceptar términos y condiciones
-            </Text>
-            <Switch
-              value={aceptarTerminos}
-              onValueChange={setAceptarTerminos}
-              thumbColor={aceptarTerminos ? "#2196F3" : "#ccc"}
-              trackColor={{ false: "#aaa", true: "#2196F3" }}
-            />
-          </View>
-          <TouchableOpacity
-            style={styles.registrarBtn}
-            onPress={handleRegistro}
-          >
-            <Text style={styles.registrarText}>Registrarse</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-      <Modal
-        visible={modalVisible}
-        transparent
-        animationType="fade"
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <View style={styles.modalBackground}>
-          <View style={styles.modalBox}>
-            <Text style={styles.modalTitle}>{modalTitulo}</Text>
-            <Text style={styles.modalMsg}>{modalMensaje}</Text>
-            <TouchableOpacity
-              style={styles.okBtn}
-              onPress={() => setModalVisible(false)}
-            >
-              <Text style={styles.okText}>OK</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
-    </ImageBackground>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+      <Text>Hola Mundo</Text>
+    </ScrollView>
   );
 }
 
@@ -154,6 +86,8 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   overlay: {
     flex: 1,
