@@ -1,23 +1,16 @@
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
-export default function Home({ navigation }) {
+export default function Home() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Bienvenido a la pantalla principal</Text>
-
-      <Pressable
-        style={[styles.button, styles.buttonProfile]}
-        onPress={() => navigation.navigate("Profile")}
-      >
-        <Text style={styles.buttonText}>Ir a Perfil</Text>
-      </Pressable>
-
-      <Pressable
-        style={[styles.button, styles.buttonSettings]}
-        onPress={() => navigation.navigate("Settings")}
-      >
-        <Text style={styles.buttonText}>Ir a Configuración</Text>
-      </Pressable>
+      <Ionicons
+        name="home-outline"
+        size={48}
+        color="#e53935"
+        style={{ marginBottom: 10 }}
+      />
+      <Text style={styles.title}>Perfil de usuario</Text>
     </View>
   );
 }
@@ -26,33 +19,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
     justifyContent: "center",
-    padding: 20,
+    alignItems: "center",
   },
   title: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 40,
+    color: "#e53935", // Rojo
     textAlign: "center",
-  },
-  button: {
-    paddingVertical: 12,
-    paddingHorizontal: 30,
-    borderRadius: 8,
-    marginBottom: 20,
-    width: "80%",
-    alignItems: "center",
-  },
-  buttonProfile: {
-    backgroundColor: "#007BFF", // Azul
-  },
-  buttonSettings: {
-    backgroundColor: "#FFB800", // Naranja
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "600",
   },
 });

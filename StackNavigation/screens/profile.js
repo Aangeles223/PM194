@@ -1,22 +1,21 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons"; // Asegúrate de tener instalado el paquete
 
 export default function Profile({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Pantalla de Perfil</Text>
-
+      <Ionicons
+        name="person-outline"
+        size={38}
+        color="#1ca150"
+        style={{ marginBottom: 10 }}
+      />
+      <Text style={styles.title}>Perfil usuario</Text>
       <Pressable
-        style={[styles.button, styles.buttonSettings]}
-        onPress={() => navigation.navigate("Settings")}
+        style={styles.buttonDetail}
+        onPress={() => navigation.navigate("Detalle")}
       >
-        <Text style={styles.buttonText}>Ir a Configuración</Text>
-      </Pressable>
-
-      <Pressable
-        style={[styles.button, styles.buttonHome]}
-        onPress={() => navigation.navigate("Home")}
-      >
-        <Text style={styles.buttonText}>Volver a Home</Text>
+        <Text style={styles.buttonDetailText}>Detalles de Usuario</Text>
       </Pressable>
     </View>
   );
@@ -28,29 +27,21 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     justifyContent: "center",
     alignItems: "center",
-    padding: 20,
   },
   title: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 40,
+    color: "#1ca150", // Verde
+    marginBottom: 16,
     textAlign: "center",
   },
-  button: {
-    paddingVertical: 12,
-    paddingHorizontal: 30,
-    borderRadius: 8,
-    marginBottom: 20,
-    width: "80%",
-    alignItems: "center",
+  buttonDetail: {
+    backgroundColor: "#2a4cff", // Azul
+    paddingVertical: 8,
+    paddingHorizontal: 18,
+    borderRadius: 6,
   },
-  buttonSettings: {
-    backgroundColor: "#FFB800", // Naranja
-  },
-  buttonHome: {
-    backgroundColor: "#28A745", // Verde
-  },
-  buttonText: {
+  buttonDetailText: {
     color: "#fff",
     fontSize: 16,
     fontWeight: "600",
